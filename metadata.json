@@ -1,0 +1,9 @@
+{
+  "name": "LocalPOS Pro",
+  "description": "A high-performance, multi-surface POS system for modern restaurants, featuring Kiosk, KDS, Admin, and Mobile Ordering.",
+  "requestFramePermissions": [
+    "camera",
+    "geolocation"
+  ],
+  "majorCapabilities": []
+}
