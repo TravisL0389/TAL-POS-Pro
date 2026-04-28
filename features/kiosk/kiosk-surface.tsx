@@ -249,7 +249,7 @@ export const KioskSurface: React.FC = () => {
 
   if (stage === 'welcome') {
     return (
-      <div className="flex min-h-[calc(100vh-6rem)] items-center justify-center">
+    <div className="kiosk-surface flex min-h-[calc(100vh-6rem)] items-center justify-center">
         <div
           className="hero-panel grid-accent relative w-full max-w-6xl overflow-hidden rounded-[44px] border border-[var(--border-strong)] p-8 sm:p-12"
           style={{

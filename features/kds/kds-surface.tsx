@@ -23,9 +23,9 @@ export const KDSSurface: React.FC = () => {
   const liveOrders = orders.filter((order) => ['received', 'preparing', 'ready'].includes(order.status));
 
   return (
-    <div className="space-y-6">
+    <div className="kds-surface mx-auto w-full max-w-[1680px] space-y-6">
       <section className="grid-accent overflow-hidden rounded-[34px] border border-[var(--border-strong)] bg-[linear-gradient(135deg,color-mix(in_srgb,var(--text)_94%,transparent),color-mix(in_srgb,var(--primary)_48%,black))] px-6 py-8 text-white shadow-[var(--shadow-strong)]">
-        <div className="flex flex-wrap items-center justify-between gap-4">
+        <div className="responsive-kds-header flex flex-wrap items-center justify-between gap-4">
           <div className="space-y-2">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1 text-xs font-bold uppercase tracking-[0.22em] text-white/80">
               <ChefHat size={14} />
@@ -43,13 +43,13 @@ export const KDSSurface: React.FC = () => {
         </div>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-3">
+      <section className="grid gap-6 lg:grid-cols-2 2xl:grid-cols-3">
         {columns.map((column) => {
           const columnOrders = liveOrders.filter((order) => order.status === column.status);
 
           return (
             <div key={column.status} className="panel-card rounded-[30px] p-5">
-              <div className="mb-4 flex items-center justify-between">
+              <div className="responsive-summary-row mb-4 flex items-center justify-between gap-3">
                 <div>
                   <h2 className="text-xl font-bold text-[var(--text)]">{column.title}</h2>
                   <p className="text-sm text-[var(--muted)]">{columnOrders.length} tickets</p>
@@ -69,7 +69,7 @@ export const KDSSurface: React.FC = () => {
 
                     return (
                       <article key={order.id} className="glass-panel rounded-[26px] p-4">
-                        <div className="mb-4 flex items-start justify-between gap-3">
+                        <div className="responsive-summary-row mb-4 flex items-start justify-between gap-3">
                           <div>
                             <div className="text-2xl font-bold text-[var(--text)]">#{order.orderNumber}</div>
                             <div className="text-sm capitalize text-[var(--body)]">

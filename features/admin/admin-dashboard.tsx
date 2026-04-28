@@ -287,17 +287,17 @@ export const AdminDashboard: React.FC = () => {
   };
 
   return (
-    <div className="mx-auto max-w-[1480px] space-y-6 pb-8">
+    <div className="admin-surface mx-auto w-full max-w-[1480px] space-y-6 pb-8">
       <section className="hero-panel grid-accent overflow-hidden rounded-[36px] border border-white/60">
-        <div className="grid gap-8 px-6 py-8 lg:grid-cols-[1.2fr_0.8fr] lg:px-10">
+        <div className="grid gap-6 px-4 py-6 sm:px-6 sm:py-8 lg:grid-cols-[1.2fr_0.8fr] lg:gap-8 lg:px-10">
           <div className="space-y-6">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/70 bg-white/75 px-3 py-1 text-xs font-bold uppercase tracking-[0.24em] text-[var(--muted)]">
+            <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-full border border-white/70 bg-white/75 px-3 py-1 text-xs font-bold uppercase tracking-[0.24em] text-[var(--muted)]">
               <BellRing size={14} className="text-[var(--primary)]" />
               Release-ready operations cockpit
             </div>
 
-            <div className="space-y-3">
-              <h1 className="max-w-3xl text-4xl font-bold tracking-tight text-[var(--text)] sm:text-5xl">
+            <div className="responsive-hero-copy space-y-3">
+              <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-[var(--text)] sm:text-4xl xl:text-5xl">
                 Professional POS control center for kiosks, pop-ups, counters, and food service demos.
               </h1>
               <p className="max-w-2xl text-base leading-7 text-[var(--body)] sm:text-lg">
@@ -382,7 +382,7 @@ export const AdminDashboard: React.FC = () => {
         </div>
       )}
 
-      <div className="panel-card rounded-[26px] p-2">
+      <div className="responsive-tabs panel-card rounded-[26px] p-2">
         {(['overview', 'orders', 'menu', 'team', 'settings'] as AdminTab[]).map((tab) => (
           <button
             key={tab}
@@ -409,7 +409,7 @@ export const AdminDashboard: React.FC = () => {
 
           <div className="grid gap-6 xl:grid-cols-[1.3fr_0.7fr]">
             <section className="panel-card rounded-[30px] p-6">
-              <div className="mb-4 flex items-center justify-between">
+              <div className="responsive-stat-row mb-4 flex items-center justify-between gap-3">
                 <div>
                   <h2 className="text-xl font-bold text-[var(--text)]">Sales trend</h2>
                   <p className="text-sm text-[var(--muted)]">Rolling 7-day revenue from demo orders.</p>
@@ -452,7 +452,7 @@ export const AdminDashboard: React.FC = () => {
                   </div>
                 ) : (
                   lowStockItems.slice(0, 5).map((item) => (
-                    <div key={item.id} className="flex items-center justify-between rounded-2xl bg-[var(--bg)] px-4 py-3">
+                    <div key={item.id} className="responsive-summary-row flex items-center justify-between gap-3 rounded-2xl bg-[var(--bg)] px-4 py-3">
                       <div>
                         <div className="font-semibold text-[var(--text)]">{item.name}</div>
                         <div className="text-sm text-[var(--muted)]">{item.sku}</div>

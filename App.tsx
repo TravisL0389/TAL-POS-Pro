@@ -64,14 +64,14 @@ const SurfaceQuickRail: React.FC = () => {
           <button
             type="button"
             onClick={() => navigate('/admin')}
-            className="touch-button touch-button-lg justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-900 shadow-sm"
+            className="touch-button touch-button-lg inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 text-sm font-semibold text-slate-900 shadow-sm"
           >
             Back to admin
           </button>
           <button
             type="button"
             onClick={() => navigate('/admin/settings')}
-            className="touch-button touch-button-lg justify-center rounded-2xl bg-slate-900 px-4 text-sm font-semibold text-white shadow-sm"
+            className="touch-button touch-button-lg inline-flex items-center justify-center rounded-2xl bg-slate-900 px-4 text-sm font-semibold text-white shadow-sm"
           >
             Change brand, photos, and pricing
           </button>
@@ -87,9 +87,9 @@ const App: React.FC = () => {
       <HashRouter>
         <ThemeWrapper>
           <ScrollManager />
-          <div className="app-shell relative flex min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_34%),linear-gradient(180deg,var(--shell),color-mix(in_srgb,var(--shell)_88%,white_12%))]">
+          <div className="app-shell relative flex min-h-screen overflow-x-clip bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.92),transparent_34%),linear-gradient(180deg,var(--shell),color-mix(in_srgb,var(--shell)_88%,white_12%))]">
             <GlobalSidebar />
-            <main className="content-stage precise-scroll min-h-screen flex-1 overflow-auto px-4 pb-4 pt-20 sm:px-6 lg:px-8">
+            <main className="content-stage precise-scroll min-h-screen min-w-0 flex-1 overflow-x-clip overflow-y-auto px-3 pb-4 pt-20 sm:px-5 lg:px-8 xl:px-10 2xl:px-12">
               <SurfaceQuickRail />
               <Suspense
                 fallback={
@@ -101,15 +101,17 @@ const App: React.FC = () => {
                   </div>
                 }
               >
-                <Routes>
-                  <Route path="/" element={<AdminDashboard />} />
-                  <Route path="/admin" element={<AdminDashboard />} />
-                  <Route path="/admin/settings" element={<AdminDashboard />} />
-                  <Route path="/kiosk" element={<KioskSurface />} />
-                  <Route path="/kds" element={<KDSSurface />} />
-                  <Route path="/mobile" element={<MobileOrdering />} />
-                  <Route path="*" element={<AdminDashboard />} />
-                </Routes>
+                <div className="mx-auto flex w-full min-w-0 max-w-[1800px] flex-col">
+                  <Routes>
+                    <Route path="/" element={<AdminDashboard />} />
+                    <Route path="/admin" element={<AdminDashboard />} />
+                    <Route path="/admin/settings" element={<AdminDashboard />} />
+                    <Route path="/kiosk" element={<KioskSurface />} />
+                    <Route path="/kds" element={<KDSSurface />} />
+                    <Route path="/mobile" element={<MobileOrdering />} />
+                    <Route path="*" element={<AdminDashboard />} />
+                  </Routes>
+                </div>
               </Suspense>
             </main>
           </div>

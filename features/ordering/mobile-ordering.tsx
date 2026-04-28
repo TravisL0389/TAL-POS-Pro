@@ -113,7 +113,7 @@ export const MobileOrdering: React.FC = () => {
   };
 
   return (
-    <div className="panel-card-strong mx-auto max-w-[520px] overflow-hidden rounded-[34px]">
+    <div className="mobile-ordering-shell panel-card-strong mx-auto w-full max-w-[1120px] overflow-hidden rounded-[34px]">
       {view === 'menu' && (
         <div className="relative min-h-[calc(100vh-8rem)] bg-[var(--surface)]">
           <div className="absolute inset-x-0 top-0 h-56 bg-[linear-gradient(180deg,color-mix(in_srgb,var(--primary)_16%,white),transparent)]" />
@@ -126,7 +126,7 @@ export const MobileOrdering: React.FC = () => {
               backgroundPosition: 'center',
             }}
           >
-            <div className="flex items-start justify-between gap-4">
+            <div className="responsive-header flex items-start justify-between gap-4">
               <div>
                 <div className="section-kicker">Mobile ordering</div>
                 <div className="mt-3 flex items-center gap-3">
@@ -153,7 +153,7 @@ export const MobileOrdering: React.FC = () => {
               </button>
             </div>
 
-            <div className="panel-card rounded-[26px] p-2">
+            <div className="responsive-toggle-row panel-card rounded-[26px] p-2">
               {(['takeout', 'delivery'] as OrderType[]).map((mode) => (
                 <button
                   key={mode}
@@ -177,7 +177,7 @@ export const MobileOrdering: React.FC = () => {
               />
             </label>
 
-            <div className="flex gap-3 overflow-x-auto pb-1">
+            <div className="responsive-category-row flex gap-3 overflow-x-auto pb-1">
               <button
                 onClick={() => setActiveCategory(null)}
                 className={`rounded-full px-4 py-3 text-sm font-semibold whitespace-nowrap ${
@@ -201,7 +201,7 @@ export const MobileOrdering: React.FC = () => {
               ))}
             </div>
 
-            <div className="space-y-4 pb-28">
+            <div className="grid gap-4 pb-28 lg:grid-cols-2">
               {filteredMenu.map((item) => (
                 <button
                   key={item.id}
@@ -209,7 +209,7 @@ export const MobileOrdering: React.FC = () => {
                     setSelectedItem(item);
                     setQuantity(1);
                   }}
-                  className="glass-panel flex w-full gap-4 rounded-[28px] p-4 text-left"
+                  className="mobile-ordering-product glass-panel flex w-full gap-4 rounded-[28px] p-4 text-left"
                 >
                   <img src={item.image} alt={item.name} className="h-24 w-24 rounded-[22px] object-cover" />
                   <div className="flex flex-1 flex-col justify-between">
@@ -240,7 +240,7 @@ export const MobileOrdering: React.FC = () => {
                 onClick={() => setView('cart')}
                 className="touch-button-lg flex w-full items-center justify-between rounded-[26px] bg-[var(--text)] px-5 py-5 text-white shadow-[0_26px_50px_rgba(15,23,42,0.24)]"
               >
-                <div className="flex items-center gap-3">
+                <div className="responsive-action-row flex items-center gap-3">
                   <span className="flex h-10 min-w-10 items-center justify-center rounded-full bg-white/15 px-2 text-sm font-semibold">
                     {cart.reduce((sum, item) => sum + item.quantity, 0)}
                   </span>
@@ -279,7 +279,7 @@ export const MobileOrdering: React.FC = () => {
                   <div className="text-lg font-bold text-[var(--primary)]">{formatPrice(getCartItemTotal(item), tenantConfig.currency)}</div>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between">
+                <div className="responsive-summary-row mt-4 flex items-center justify-between gap-3">
                   <div className="flex items-center gap-2 rounded-[18px] bg-white p-2">
                     <button
                       onClick={() =>
@@ -317,7 +317,7 @@ export const MobileOrdering: React.FC = () => {
 
           <div className="panel-card space-y-4 rounded-[28px] p-5">
             <div className="text-lg font-bold text-[var(--text)]">Tip</div>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[0, 10, 15, 20].map((tip) => (
                 <button
                   key={tip}
@@ -408,7 +408,7 @@ export const MobileOrdering: React.FC = () => {
 
           <div className="panel-card space-y-4 rounded-[28px] p-5">
             {displayedOrder.items.map((item) => (
-              <div key={item.id} className="flex items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-4">
+              <div key={item.id} className="responsive-summary-row flex items-center justify-between gap-3 rounded-[22px] bg-white px-4 py-4">
                 <div>
                   <div className="font-semibold text-[var(--text)]">
                     {item.quantity}x {item.name}
@@ -457,11 +457,11 @@ export const MobileOrdering: React.FC = () => {
       )}
 
       {selectedItem && (
-        <div className="fixed inset-0 z-[90] flex items-end justify-center bg-slate-950/55 p-4 backdrop-blur-sm">
-          <div className="panel-card-strong w-full max-w-[520px] overflow-hidden rounded-[30px]">
+        <div className="fixed inset-0 z-[90] flex items-end justify-center bg-slate-950/55 p-4 backdrop-blur-sm sm:items-center">
+          <div className="mobile-ordering-modal panel-card-strong w-full max-w-[640px] overflow-hidden rounded-[30px]">
             <img src={selectedItem.image} alt={selectedItem.name} className="h-52 w-full object-cover" />
             <div className="space-y-5 p-5">
-              <div className="flex items-start justify-between gap-3">
+              <div className="responsive-summary-row flex items-start justify-between gap-3">
                 <div>
                   <h3 className="text-2xl font-bold text-[var(--text)]">{selectedItem.name}</h3>
                   <p className="mt-2 text-sm leading-6 text-[var(--body)]">{selectedItem.description}</p>
@@ -474,7 +474,7 @@ export const MobileOrdering: React.FC = () => {
                 </button>
               </div>
 
-              <div className="flex items-center justify-between rounded-[24px] bg-[var(--bg)] p-3">
+              <div className="responsive-summary-row flex items-center justify-between rounded-[24px] bg-[var(--bg)] p-3">
                 <button
                   onClick={() => setQuantity((previous) => Math.max(1, previous - 1))}
                   className="flex h-12 w-12 items-center justify-center rounded-2xl border border-[var(--border)] bg-white text-[var(--body)]"

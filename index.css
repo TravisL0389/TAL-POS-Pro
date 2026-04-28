@@ -28,6 +28,7 @@ body {
   margin: 0;
   font-family: 'Space Grotesk', sans-serif;
   color: var(--text);
+  overflow-x: hidden;
   overscroll-behavior-y: none;
   background:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.88), transparent 28%),
@@ -104,6 +105,37 @@ a:focus-visible {
 img {
   display: block;
   max-width: 100%;
+}
+
+img,
+svg,
+video,
+canvas {
+  max-width: 100%;
+}
+
+#root,
+.content-stage,
+.content-stage > * {
+  min-width: 0;
+}
+
+.admin-surface,
+.kiosk-surface,
+.mobile-ordering-shell,
+.kds-surface {
+  min-width: 0;
+}
+
+.admin-surface .panel-card,
+.admin-surface .glass-panel,
+.kiosk-surface .panel-card,
+.kiosk-surface .glass-panel,
+.mobile-ordering-shell .panel-card,
+.mobile-ordering-shell .glass-panel,
+.kds-surface .panel-card,
+.kds-surface .glass-panel {
+  min-width: 0;
 }
 
 ::selection {
@@ -379,5 +411,157 @@ input[type='number'] {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .surface-rail {
+    border-radius: 1.5rem;
+  }
+
+  .surface-rail > div:last-child,
+  .surface-rail .flex-col:last-child {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .app-shell::before {
+    top: -120px;
+    right: -90px;
+    height: 220px;
+    width: 220px;
+  }
+
+  .app-shell::after {
+    bottom: 4%;
+    left: -120px;
+    height: 240px;
+    width: 240px;
+  }
+
+  .surface-rail {
+    gap: 0.875rem;
+  }
+
+  .surface-rail button,
+  .surface-rail a {
+    width: 100%;
+  }
+
+  .admin-surface .hero-panel,
+  .kiosk-surface .hero-panel,
+  .mobile-ordering-shell,
+  .kds-surface > section:first-child {
+    border-radius: 1.75rem;
+  }
+
+  .admin-surface .responsive-tabs,
+  .mobile-ordering-shell .responsive-toggle-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .admin-surface .responsive-tabs > *,
+  .mobile-ordering-shell .responsive-toggle-row > * {
+    flex: 1 1 11rem;
+    min-width: 0;
+  }
+
+  .admin-surface .responsive-stat-row,
+  .mobile-ordering-shell .responsive-summary-row,
+  .kds-surface .responsive-summary-row {
+    flex-wrap: wrap;
+  }
+
+  .admin-surface .responsive-stat-row > *,
+  .mobile-ordering-shell .responsive-summary-row > *,
+  .kds-surface .responsive-summary-row > * {
+    width: 100%;
+  }
+
+  .mobile-ordering-shell .responsive-category-row {
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .mobile-ordering-shell .responsive-category-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobile-ordering-shell .mobile-ordering-product {
+    align-items: flex-start;
+  }
+
+  .mobile-ordering-shell .mobile-ordering-product > img {
+    height: 5.5rem;
+    width: 5.5rem;
+  }
+
+  .mobile-ordering-shell .mobile-ordering-modal {
+    max-height: calc(100vh - 2rem);
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .content-stage {
+    scrollbar-gutter: auto;
+  }
+
+  .admin-surface .hero-panel,
+  .admin-surface .panel-card,
+  .admin-surface .glass-panel,
+  .kiosk-surface .hero-panel,
+  .kiosk-surface .panel-card,
+  .kiosk-surface .glass-panel,
+  .mobile-ordering-shell,
+  .mobile-ordering-shell .panel-card,
+  .mobile-ordering-shell .glass-panel,
+  .kds-surface .panel-card,
+  .kds-surface .glass-panel {
+    border-radius: 1.4rem;
+  }
+
+  .admin-surface .responsive-hero-copy,
+  .mobile-ordering-shell .responsive-header,
+  .mobile-ordering-shell .mobile-ordering-product,
+  .mobile-ordering-shell .responsive-summary-row,
+  .kds-surface .responsive-summary-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .admin-surface .responsive-hero-copy > *,
+  .mobile-ordering-shell .responsive-header > *,
+  .mobile-ordering-shell .responsive-summary-row > *,
+  .kds-surface .responsive-summary-row > * {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .mobile-ordering-shell .mobile-ordering-product > img {
+    height: 100%;
+    width: 100%;
+    max-height: 11rem;
+  }
+
+  .mobile-ordering-shell .responsive-action-row,
+  .kds-surface .responsive-kds-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mobile-ordering-shell .responsive-action-row > *,
+  .kds-surface .responsive-kds-header > * {
+    width: 100%;
   }
 }
